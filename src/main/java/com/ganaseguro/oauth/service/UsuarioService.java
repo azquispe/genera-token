@@ -30,6 +30,9 @@ public class UsuarioService implements UserDetailsService {
         List<String> lstRoles = new ArrayList<>();
         lstRoles.add("ROL");
 
+        if(username==null || !username.equals("admin")){
+            throw new UsernameNotFoundException("Error en el Login: no existe el usuario");
+        }
 
         List<GrantedAuthority> autoAuthorities = new ArrayList<>();
         autoAuthorities = lstRoles.stream()
@@ -39,7 +42,7 @@ public class UsuarioService implements UserDetailsService {
         log.info("Usuario autenticado: "+username);
 
         return new User(username,
-                "Contrasena",
+                "$2a$10$4yXGkscEfCm.Z.dW2PitEu/aj6oFmjKKHCxnab0texVpQbQoIeqTK",
                 true,
                 true,
                 true,

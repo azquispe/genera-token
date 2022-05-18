@@ -29,38 +29,41 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    /*@Autowired
-    @Qualifier("authenticationManager")
-    private AuthenticationManager authenticationManager;*/
-
     @Autowired
+    @Qualifier("authenticationManager")
     private AuthenticationManager authenticationManager;
 
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security.tokenKeyAccess("permitAll()")
-                .checkTokenAccess("isAuthenticated()");
+        security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        System.out.println("ClientDetailsServiceConfigurer");
+
+
         clients.inMemory()
+                //credencial de la app
                 .withClient("aquispe")
-                .secret(passwordEncoder.encode("aquispe")).scopes("read", "write")
+                .secret(passwordEncoder.encode("aquispe"))
+
+                .scopes("read", "write")
                 .authorizedGrantTypes("password", "refresh_token")
-                .accessTokenValiditySeconds(43200)
-                .refreshTokenValiditySeconds(43200);
+                .accessTokenValiditySeconds(3600)
+                .refreshTokenValiditySeconds(3600);
+
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
+        //TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
         //tokenEnhancerChain.setTokenEnhancers(Arrays.asList(infoAdicionarToken, accessTokenConverter()));
 
-        endpoints.authenticationManager(authenticationManager).tokenStore(tokenStore())
-                .accessTokenConverter(accessTokenConverter()).tokenEnhancer(tokenEnhancerChain);
+        endpoints.authenticationManager(authenticationManager)
+                .tokenStore(tokenStore())
+                .accessTokenConverter(accessTokenConverter());
+                //.tokenEnhancer(tokenEnhancerChain);
     }
 
     @Bean
