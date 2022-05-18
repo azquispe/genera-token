@@ -33,6 +33,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Qualifier("authenticationManager")
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private InfoAdicionarToken infoAdicionarToken;
+
+
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
@@ -57,13 +61,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        //TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
-        //tokenEnhancerChain.setTokenEnhancers(Arrays.asList(infoAdicionarToken, accessTokenConverter()));
-
+        TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
+        tokenEnhancerChain.setTokenEnhancers(Arrays.asList(infoAdicionarToken, accessTokenConverter()));
         endpoints.authenticationManager(authenticationManager)
                 .tokenStore(tokenStore())
-                .accessTokenConverter(accessTokenConverter());
-                //.tokenEnhancer(tokenEnhancerChain);
+                .accessTokenConverter(accessTokenConverter())
+                .tokenEnhancer(tokenEnhancerChain);
     }
 
     @Bean
@@ -74,8 +77,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
-        jwtAccessTokenConverter.setSigningKey(JwtConfig.RSA_PRIVATE);
-        jwtAccessTokenConverter.setVerifierKey(JwtConfig.RSA_PUBLIC);
+        jwtAccessTokenConverter.setSigningKey(JwtConfig.RSA_PRIVATE); // llave privada para Firmar
+        jwtAccessTokenConverter.setVerifierKey(JwtConfig.RSA_PUBLIC); // llave publica para Validar firma
         return jwtAccessTokenConverter;
     }
 }
