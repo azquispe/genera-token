@@ -25,7 +25,6 @@ import java.util.Arrays;
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
@@ -78,7 +77,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
         jwtAccessTokenConverter.setSigningKey(JwtConfig.RSA_PRIVATE); // llave privada para Firmar
-        jwtAccessTokenConverter.setVerifierKey(JwtConfig.RSA_PUBLIC); // llave publica para Validar firma
+        //jwtAccessTokenConverter.setVerifierKey(JwtConfig.RSA_PUBLIC); // llave publica para Validar firma de momento esto no se usa aca, eso sirve para servidor de recursos
         return jwtAccessTokenConverter;
     }
 }

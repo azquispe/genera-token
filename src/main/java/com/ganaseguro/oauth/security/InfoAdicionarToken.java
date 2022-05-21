@@ -15,7 +15,7 @@ public class InfoAdicionarToken implements TokenEnhancer {
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken oAuth2AccessToken, OAuth2Authentication oAuth2Authentication) {
         Map<String,Object> info = new HashMap<>();
-        info.put("Data Adicional","......");
+        info.put("inf_adicional","...");
         ((DefaultOAuth2AccessToken)oAuth2AccessToken).setAdditionalInformation(info);
         return oAuth2AccessToken;
     }

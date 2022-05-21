@@ -1,6 +1,7 @@
 package com.ganaseguro.oauth.security;
 
 public class JwtConfig {
+
     public static final String RSA_PRIVATE="-----BEGIN RSA PRIVATE KEY-----\n" +
             "MIIEowIBAAKCAQEAvTi3g7xOXzoq6p5fMbHwSLu4ja3qYo9RN/wd6LKcKpnzbq3+\n" +
             "WBR20rsq/Y6Bq6wG+4cHtw5AfmsJp6xnWPdb72qJXFvaOoQw5z1e2mVDe9eko2Ql\n" +
@@ -29,7 +30,7 @@ public class JwtConfig {
             "AsBrTKG8224L+cfyYbOjRcQqZ2GmL4ABb+JYG3fICiMnV6ikOkQE\n" +
             "-----END RSA PRIVATE KEY-----";
 
-    public static final String RSA_PUBLIC="-----BEGIN PUBLIC KEY-----\n" +
+    /*public static final String RSA_PUBLIC="-----BEGIN PUBLIC KEY-----\n" +
             "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvTi3g7xOXzoq6p5fMbHw\n" +
             "SLu4ja3qYo9RN/wd6LKcKpnzbq3+WBR20rsq/Y6Bq6wG+4cHtw5AfmsJp6xnWPdb\n" +
             "72qJXFvaOoQw5z1e2mVDe9eko2QlCF+i/nD1cT4VsiBT7pjvc/bpjYPH26F9Mvsa\n" +
@@ -37,5 +38,6 @@ public class JwtConfig {
             "8IEpN0Wfm5cuwYom68O9bUtZl6u07RDBrJEuJacctFVHI6dV0QRBHReWVJyrOsmj\n" +
             "W/Y9halE+f1kgzA7ijLusHx8YveF2KH7a3eTquwl5uWGp+FGSoQk8257hdypTiAr\n" +
             "IQIDAQAB\n" +
-            "-----END PUBLIC KEY-----";
+            "-----END PUBLIC KEY-----";*/
+
 }
