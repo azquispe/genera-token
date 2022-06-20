@@ -31,7 +31,7 @@ public class UsuarioService implements UserDetailsService {
         lstRoles.add("ROL");
 
         if(username==null || !username.equals("admin")){
-            throw new UsernameNotFoundException("Error en el Login: no existe el usuario");
+            throw new UsernameNotFoundException("Usuario y/o Contraseña Incorrecta");
         }
 
         List<GrantedAuthority> autoAuthorities = new ArrayList<>();

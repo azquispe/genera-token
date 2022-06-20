@@ -46,18 +46,15 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
 
-        clients.inMemory()
-                //credencial de la app
-                .withClient("aquispe")
-                .secret(passwordEncoder.encode("aquispe"))
-
-                .scopes("read", "write")
-                .authorizedGrantTypes("password", "refresh_token")
-                .accessTokenValiditySeconds(3600)
-                .refreshTokenValiditySeconds(3600);
-
+            clients.inMemory()
+                    //credencial de la app
+                    .withClient("salesforce")
+                    .secret(passwordEncoder.encode("5AL3570853"))
+                    .scopes("read", "write")
+                    .authorizedGrantTypes("password", "refresh_token")
+                    .accessTokenValiditySeconds(1800) // 30 minutos
+                    .refreshTokenValiditySeconds(3600); // 1 hora
     }
-
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
@@ -80,4 +77,5 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         //jwtAccessTokenConverter.setVerifierKey(JwtConfig.RSA_PUBLIC); // llave publica para Validar firma de momento esto no se usa aca, eso sirve para servidor de recursos
         return jwtAccessTokenConverter;
     }
+
 }
