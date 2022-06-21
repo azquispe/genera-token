@@ -52,8 +52,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                     .secret(passwordEncoder.encode("5AL3570853"))
                     .scopes("read", "write")
                     .authorizedGrantTypes("password", "refresh_token")
-                    .accessTokenValiditySeconds(1800) // 30 minutos
-                    .refreshTokenValiditySeconds(3600); // 1 hora
+                    .accessTokenValiditySeconds(300) // 5 MINUTOS
+                    .refreshTokenValiditySeconds(600); // 10 MINUTOS
     }
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
