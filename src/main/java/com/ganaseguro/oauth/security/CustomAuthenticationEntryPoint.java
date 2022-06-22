@@ -23,7 +23,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
         httpServletResponse.setContentType("application/json;charset=UTF-8");
 
         Map<String, Object> response = new HashMap<>();
-        response.put("error", "credenciales incorrectas");
+        response.put("error", "invalid_credential");
         response.put("error_description","credenciales incorrectas");
         ObjectMapper mapper = new ObjectMapper();
         httpServletResponse.getWriter().write( mapper.writeValueAsString(response));
