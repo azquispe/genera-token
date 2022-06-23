@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.OrRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
@@ -25,6 +26,8 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService usuarioService;
+
+
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -48,24 +51,8 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
-
-
-        // SMS PERSONALIZADOS
-        http.exceptionHandling()
-                .authenticationEntryPoint(new CustomAuthenticationEntryPoint());
-
-
-
-
-
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and().oauth2Login().successHandler(new CustomAuthenticationSuccessHandler());
 
     }
-
-
-
-
-
-
 }
