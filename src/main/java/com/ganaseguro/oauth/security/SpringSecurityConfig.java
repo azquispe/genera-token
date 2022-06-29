@@ -27,6 +27,11 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService usuarioService;
 
+    @Autowired
+    private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+
+    @Autowired
+    private CustomAuthenticationEntryPoint authenticationEntryPoint;
 
 
     @Bean
@@ -52,6 +57,7 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
 
     }
 }

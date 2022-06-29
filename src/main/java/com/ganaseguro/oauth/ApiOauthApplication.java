@@ -13,10 +13,10 @@ public class ApiOauthApplication  {
 
     public static void main(String[] args) {
 
-        String encoded = new BCryptPasswordEncoder().encode("9133040");
+        /*String encoded = new BCryptPasswordEncoder().encode("9133040");
 		System.out.println("=========================================");
 		System.out.println(encoded);
-		System.out.println("=========================================");
+		System.out.println("=========================================");*/
 
 
         SpringApplication.run(ApiOauthApplication.class, args);
