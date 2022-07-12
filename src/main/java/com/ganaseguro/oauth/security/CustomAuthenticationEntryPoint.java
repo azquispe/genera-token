@@ -24,7 +24,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
 
         Map<String, Object> response = new HashMap<>();
         response.put("codigoMensaje", ConstDiccionarioMensajeFirma.COD5000);
-        response.put("mensaje",ConstDiccionarioMensajeFirma.COD5000_MENSAJE+e.getMessage());
+        response.put("mensaje",ConstDiccionarioMensajeFirma.COD5000_MENSAJE+" Mensaje Técnico: "+e.getMessage());
 
 
         ObjectMapper mapper = new ObjectMapper();

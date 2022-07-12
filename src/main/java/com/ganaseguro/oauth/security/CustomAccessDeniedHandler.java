@@ -22,7 +22,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
         Map<String, Object> re = new HashMap<>();
         re.put("codigoMensaje",  ConstDiccionarioMensajeFirma.COD5001);
-        re.put("mensaje",ConstDiccionarioMensajeFirma.COD5001_MENSAJE+accessDeniedException.getMessage());
+        re.put("mensaje",ConstDiccionarioMensajeFirma.COD5001_MENSAJE+" Mensaje Técnico: "+accessDeniedException.getMessage());
         ObjectMapper mapper = new ObjectMapper();
         response.getWriter().write( mapper.writeValueAsString(re));
 
