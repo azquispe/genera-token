@@ -30,7 +30,7 @@ public class UsuarioService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         List<String> lstRoles = new ArrayList<>();
-        lstRoles.add("ROL");
+        lstRoles.add("FIRMADOR");
 
         if(username==null || !username.equals("admin")){
             throw new UsernameNotFoundException("Usuario y/o Contraseña Incorrecta");
